@@ -1,4 +1,8 @@
 export interface IComuni {
+    content: Comuni[];
+}
+
+export interface Comuni {
 
     id: number,
     nome: string,

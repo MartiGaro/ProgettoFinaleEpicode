@@ -23,8 +23,16 @@ export class ClientiComponent implements OnInit {
   }
 
   eliminaCliente(item: IClienti) {
-    this.clientiService.removeCliente(item.id!).subscribe(res => {
+    this.clientiService.removeCliente(item).subscribe(res => {
       this.clientiService.getAllClienti().subscribe(res => this.clienti = res.content)
     });
+  }
+  
+  nuovoCliente(){
+    this.router.navigate(['clienti/nuovo']);
+  }
+
+  modificaCliente(item: IClienti) {
+    this.router.navigate(['clienti', item.id, 'modifica'])
   }
 }
