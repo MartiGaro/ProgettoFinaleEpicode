@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { ComuneClass } from '../classes/comune-class';
 import { IComuni } from '../interfaces/icomuni';
 
 @Injectable({
@@ -17,7 +18,7 @@ export class ComuniService {
     return this.http.get<IComuni>(this.urlComuniAll);
   }
 
-  getComuni() {
-    return this.http.get(this.urlComuni);
+  createComune(comune: ComuneClass) {
+    return this.http.post<ComuneClass>(this.urlComuni, comune);
   }
 }

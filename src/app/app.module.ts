@@ -13,6 +13,7 @@ import { FattureComponent } from './fatture/fatture.component';
 import { MyhttpInterceptor } from './myhttp.interceptor';
 import { DettaglioComponent } from './dettaglio/dettaglio.component';
 import { NewClienteComponent } from './new-cliente/new-cliente.component';
+import { NewComuneComponent } from './new-comune/new-comune.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { NewClienteComponent } from './new-cliente/new-cliente.component';
     FattureComponent,
     DettaglioComponent,
     NewClienteComponent,
+    NewComuneComponent,
   ],
   imports: [
     BrowserModule,

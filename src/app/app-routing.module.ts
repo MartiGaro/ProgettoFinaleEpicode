@@ -5,6 +5,7 @@ import { DettaglioComponent } from './dettaglio/dettaglio.component';
 import { FattureComponent } from './fatture/fatture.component';
 import { LoginComponent } from './login/login.component';
 import { NewClienteComponent } from './new-cliente/new-cliente.component';
+import { NewComuneComponent } from './new-comune/new-comune.component';
 
 const routes: Routes = [
   { path: '',
@@ -34,6 +35,10 @@ const routes: Routes = [
   { 
     path: 'clienti/:id/modifica',
     component: NewClienteComponent,
+  },
+  { 
+    path: 'comuni/nuovo',
+    component: NewComuneComponent,
   }
 ];
 

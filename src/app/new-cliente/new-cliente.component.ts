@@ -67,5 +67,8 @@ export class NewClienteComponent implements OnInit {
     });
   }
 
+  nuovoComune(){
+    this.router.navigate(['comuni/nuovo']);
+  }
 }
 
