@@ -14,6 +14,7 @@ import { MyhttpInterceptor } from './myhttp.interceptor';
 import { DettaglioComponent } from './dettaglio/dettaglio.component';
 import { NewClienteComponent } from './new-cliente/new-cliente.component';
 import { NewComuneComponent } from './new-comune/new-comune.component';
+import { DettaglioFattComponent } from './dettaglio-fatt/dettaglio-fatt.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { NewComuneComponent } from './new-comune/new-comune.component';
     DettaglioComponent,
     NewClienteComponent,
     NewComuneComponent,
+    DettaglioFattComponent,
   ],
   imports: [
     BrowserModule,

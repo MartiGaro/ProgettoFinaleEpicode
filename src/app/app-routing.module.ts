@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClientiComponent } from './clienti/clienti.component';
+import { DettaglioFattComponent } from './dettaglio-fatt/dettaglio-fatt.component';
 import { DettaglioComponent } from './dettaglio/dettaglio.component';
 import { FattureComponent } from './fatture/fatture.component';
 import { LoginComponent } from './login/login.component';
@@ -26,19 +27,23 @@ const routes: Routes = [
   },
   { 
     path: 'clienti/:id/dettaglio',
-    component: DettaglioComponent,
+    component: DettaglioComponent
   },
   { 
     path: 'clienti/nuovo',
-    component: NewClienteComponent,
+    component: NewClienteComponent
   },
   { 
     path: 'clienti/:id/modifica',
-    component: NewClienteComponent,
+    component: NewClienteComponent
   },
   { 
     path: 'comuni/nuovo',
-    component: NewComuneComponent,
+    component: NewComuneComponent
+  },
+  { 
+    path: 'fatture/:id/dettaglio',
+    component: DettaglioFattComponent
   }
 ];
 
