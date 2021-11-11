@@ -1,0 +1,15 @@
+<h2 class="my-3 text-center">Fatture cliente {{fatture.cliente.ragioneSociale}}</h2>
+<div class="d-flex flex-column align-items-center mb-3">
+    <div class="card mt-3 mb-4" style="width: 75%;">
+        <div class="card-header bg-dark text-light">
+            Fattura
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><span>Data: {{fatture.data}}</span></li>
+            <li class="list-group-item"><span>Numero: {{fatture.numero}}</span></li>
+            <li class="list-group-item"><span>Anno: {{fatture.anno}}</span></li>
+            <li class="list-group-item"><span>Stato: {{fatture.stato.nome}}</span></li>
+        </ul>
+    </div>
+    {{fatture | json}}
+</div>

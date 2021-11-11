@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { FatturaClass } from '../classes/fattura-class';
 import { IApi } from '../interfaces/iapi';
 import { IFatture } from '../interfaces/ifatture';
 
@@ -29,6 +30,14 @@ export class FattureService {
 
   removeFattura(fattura: IFatture) {
     return this.http.delete(this.urlFatture + fattura.id);
+  }
+
+  createFattura(fattura: FatturaClass) {
+    return this.http.post<FatturaClass>(this.urlFatture, fattura);
+  }
+
+  updtateFattura(fattura: FatturaClass) {
+    return this.http.put<FatturaClass>(this.urlFatture + fattura.id, fattura);
   }
 
 }

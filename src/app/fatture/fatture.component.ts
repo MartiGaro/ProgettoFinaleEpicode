@@ -51,4 +51,7 @@ export class FattureComponent implements OnInit {
     });
   }
 
+  modificaFattura(item: IFatture) {
+    this.router.navigate(['fatture', item.id, 'modifica']);
+  }
 }

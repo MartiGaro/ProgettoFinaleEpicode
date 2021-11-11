@@ -32,11 +32,11 @@ export class NewClienteComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(element =>{
       if (!element.id) {
-        this.title = 'Nuovo Cliente'
+        this.title = 'Nuovo Cliente';
         this.clienteMod = new ClienteClass();
       }
       else {
-        this.title = 'Modifica Cliente'
+        this.title = 'Modifica Cliente';
         this.clientiService.getCliente(element.id).subscribe(cliente => this.clienteMod = cliente);
       }
     });

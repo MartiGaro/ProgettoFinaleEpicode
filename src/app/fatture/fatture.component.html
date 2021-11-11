@@ -26,7 +26,7 @@
         <td>{{item.anno}}</td>
         <td>{{item.stato.nome}}</td>
         <td><button type="button" class="btn btn-outline-primary btn-sm"><i class="bi bi-info-square-fill" (click)="dettaglioFattura(item)"></i></button></td>
-        <td><button type="button" class="btn btn-outline-warning btn-sm"><i class="bi bi-pencil-fill"></i></button></td>
+        <td><button type="button" class="btn btn-outline-warning btn-sm"><i class="bi bi-pencil-fill" (click)="modificaFattura(item)"></i></button></td>
         <td><button type="button" class="btn btn-outline-danger btn-sm"><i class="bi bi-x-circle-fill" (click)="eliminaFattura(item)"></i></button></td>
       </tr>
       </tbody>

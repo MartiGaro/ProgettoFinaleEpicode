@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ComuneClass } from '../classes/comune-class';
 import { IProvince, Province } from '../interfaces/iprovince';
 import { ComuniService } from '../services/comuni.service';
@@ -12,13 +12,19 @@ import { ProvinceService } from '../services/province.service';
 })
 export class NewComuneComponent implements OnInit {
 
-  newComune!:ComuneClass;
+  newComune = {
+    nome: '',
+    provincia: {
+      id: 0
+    }
+}
   province: Province[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private provinceService: ProvinceService,
-    private comuniService: ComuniService
+    private comuniService: ComuniService,
+    private router: Router
     ) 
     
     { }
@@ -37,8 +43,10 @@ export class NewComuneComponent implements OnInit {
   salvaComune() {
     this.comuniService.createComune(this.newComune).subscribe(res => {
       alert('Comune creato con successo!');
-      console.log(this.newComune)
     });
   }
 
+  nuovaProvincia() {
+    this.router.navigate(['province/nuova']);
+  }
 }

@@ -33,6 +33,10 @@ export class ClientiComponent implements OnInit {
   }
 
   modificaCliente(item: IClienti) {
-    this.router.navigate(['clienti', item.id, 'modifica'])
+    this.router.navigate(['clienti', item.id, 'modifica']);
+  }
+
+  fattureCliente(item: IClienti) {
+    this.router.navigate(['clienti', item.id, 'fatture']);
   }
 }

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { IApi } from '../interfaces/iapi';
 import { IStatofattura } from '../interfaces/istatofattura';
 
 @Injectable({
@@ -14,7 +15,7 @@ export class StatofatturaService {
   constructor(private http: HttpClient) { }
 
   getAllStatoFatt() {
-    return this.http.get(this.urlStatoFattAll);
+    return this.http.get<IApi>(this.urlStatoFattAll);
   }
   
   getStatoFatt() {

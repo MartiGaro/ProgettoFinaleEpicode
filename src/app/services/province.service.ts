@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { ProvinciaClass } from '../classes/provincia-class';
 import { IProvince } from '../interfaces/iprovince';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { IProvince } from '../interfaces/iprovince';
 })
 export class ProvinceService {
 
-  urlProvinceAll = environment.urlAPI + '/api/province?page=0&size=20&sort=id,ASC';
+  urlProvinceAll = environment.urlAPI + '/api/province?page=0&size=20&sort=id,DESC';
   urlProvince = environment.urlAPI + '/api/province'
 
 
@@ -18,7 +19,7 @@ export class ProvinceService {
     return this.http.get<IProvince>(this.urlProvinceAll);
   }
 
-  getProvince() {
-    return this.http.get(this.urlProvince);
-  }
+  createProvincia(provincia: any) {
+    return this.http.post(this.urlProvince, provincia)
+  } 
 }

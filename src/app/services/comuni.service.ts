@@ -9,7 +9,7 @@ import { IComuni } from '../interfaces/icomuni';
 })
 export class ComuniService {
 
-  urlComuniAll = environment.urlAPI + '/api/comuni?page=0&size=20&sort=id,ASC';
+  urlComuniAll = environment.urlAPI + '/api/comuni?page=0&size=20&sort=id,DESC';
   urlComuni = environment.urlAPI + '/api/comuni'
 
   constructor(private http: HttpClient) { }
@@ -18,7 +18,7 @@ export class ComuniService {
     return this.http.get<IComuni>(this.urlComuniAll);
   }
 
-  createComune(comune: ComuneClass) {
-    return this.http.post<ComuneClass>(this.urlComuni, comune);
+  createComune(comune: any) {
+    return this.http.post(this.urlComuni, comune);
   }
 }

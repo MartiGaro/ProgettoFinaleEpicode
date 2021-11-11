@@ -8,19 +8,11 @@
         <div class="input-group-prepend">
           <label class="input-group-text" for="inputGroupSelect01">Provincia</label>
         </div>
-        <select class="custom-select" id="inputGroupSelect01">
+        <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="newComune.provincia.id">
           <option selected></option>
-          <option [ngValue]="item" *ngFor="let item of province">{{item.nome}}</option>
+          <option [ngValue]="item.id" *ngFor="let item of province">{{item.nome}}</option>
         </select>
       </div>
-      <div class="input-group mb-3 w-50">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01">Sigla</label>
-        </div>
-        <select class="custom-select" id="inputGroupSelect01">
-          <option selected></option>
-          <option [ngValue]="item" *ngFor="let item of province">{{item.sigla}}</option>
-        </select>
-      </div>
+      <button _ngcontent-wjk-c55="" type="button" class="btn btn-outline-primary mb-3" (click)="nuovaProvincia()">Clicca qui per inserire una nuova provincia <i _ngcontent-wjk-c55="" class="bi bi-pin-map-fill"></i></button>
     <button type="button" class="btn btn-primary w-25 my-3" (click)="salvaComune()">Salva</button>
 </div>
