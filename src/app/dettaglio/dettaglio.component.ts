@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IClienti } from '../interfaces/iclienti';
 import { ClientiService } from '../services/clienti.service';
 
@@ -12,7 +12,7 @@ export class DettaglioComponent implements OnInit {
 
   dettaglio!: IClienti;
 
-  constructor(private clientiService: ClientiService, private route: ActivatedRoute) { }
+  constructor(private clientiService: ClientiService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(element => {
@@ -20,6 +20,10 @@ export class DettaglioComponent implements OnInit {
         this.clientiService.getCliente(element.id).subscribe(cliente => this.dettaglio = cliente);
       }
     })
+  }
+
+  tutteFatture() {
+    this.router.navigate(['clienti', this.dettaglio.id ,'fatture'])
   }
 
 }

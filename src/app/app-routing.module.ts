@@ -8,8 +8,9 @@ import { FattureComponent } from './fatture/fatture.component';
 import { LoginComponent } from './login/login.component';
 import { NewClienteComponent } from './new-cliente/new-cliente.component';
 import { NewComuneComponent } from './new-comune/new-comune.component';
-import { NewFatturaComponent } from './new-fattura/new-fattura.component';
+import { ModFatturaComponent } from './mod-fattura/mod-fattura.component';
 import { NewProvinciaComponent } from './new-provincia/new-provincia.component';
+import { NewFatturaComponent } from './new-fattura/new-fattura.component';
 
 const routes: Routes = [
   { path: '',
@@ -57,12 +58,12 @@ const routes: Routes = [
     component: DettaglioFattComponent
   },
   { 
-    path: 'fatture/nuova',
+    path: 'fatture/:id/nuova',
     component: NewFatturaComponent
   },
   { 
     path: 'fatture/:id/modifica',
-    component: NewFatturaComponent
+    component: ModFatturaComponent
   }
 ];
 

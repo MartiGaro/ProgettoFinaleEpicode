@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FatturaClass } from '../classes/fattura-class';
-import { Comuni } from '../interfaces/icomuni';
-import { IFatture } from '../interfaces/ifatture';
+import { FatturaCliente } from '../classes/fattura-cliente';
 import { IStatofattura } from '../interfaces/istatofattura';
-import { ComuniService } from '../services/comuni.service';
 import { FattureService } from '../services/fatture.service';
 import { StatofatturaService } from '../services/statofattura.service';
-import { TipoclienteService } from '../services/tipocliente.service';
 
 @Component({
   selector: 'app-new-fattura',
@@ -16,58 +12,44 @@ import { TipoclienteService } from '../services/tipocliente.service';
 })
 export class NewFatturaComponent implements OnInit {
 
-  fatturaMod!: IFatture;
-  title: string = '';
-  stato!: IStatofattura[];
-  tipo: string[] = [];
-  comuni: Comuni[] = [];
-  
+  newFattura!: FatturaCliente;
+  stato!: IStatofattura;
+
   constructor(
     private fattureService: FattureService,
-    private router: Router,
     private route: ActivatedRoute,
-    private statoService: StatofatturaService,
-    private tipoClienteService: TipoclienteService,
-    private comuniService: ComuniService
-  ) { }
+    private router: Router,
+    private statoService: StatofatturaService
+    ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(element => {
-      if (!element.id) {
-        this.title = 'Nuova Fattura';
-        this.fatturaMod = new FatturaClass();
+      if (element.id) {
+        this.newFattura = new FatturaCliente();
       }
-      else {
-        this.title = 'Modifica Fattura';
-        this.fattureService.getFatture(element.id).subscribe(fattura => this.fatturaMod = fattura);
-      }
-    })
+    });
     this.getStato();
-    this.getTipo();
   }
 
   getStato() {
-    this.statoService.getAllStatoFatt().subscribe(stato => this.stato = stato.content);
+   this.statoService.getAllStatoFatt().subscribe(stato => this.stato = stato.content)
   }
 
-  getTipo() {
-    this.tipoClienteService.getAllTipoCliente().subscribe(tipo => this.tipo = tipo);
-  }
-
-  getComuni() {
-    this.comuniService.getAllComuni().subscribe(comuni => this.comuni = comuni.content);
-  }
-
-  salvaFattura(){
+  creaFattura() {
     this.route.params.subscribe(element => {
-      if (!element.id) {
-        this.fattureService.createFattura(this.fatturaMod).subscribe(res => {
-          this.router.navigate(['fatture']);
-        });
-      }
-      else {
-        this.fattureService.updtateFattura(this.fatturaMod).subscribe(res => {
-          this.router.navigate(['fatture']);
+      if (element.id) {
+        let data = new Date();
+        this.newFattura.data = data.getFullYear() + "-" + data.getMonth() + "-" + ('0' + data.getDate()).slice(-2) + "T" + ('0' + data.getHours()).slice(-2) + ":" + ('0' + data.getMinutes()).slice(-2) + ":" + data.getSeconds() + "." + data.getMilliseconds() + "+00:00";
+        this.newFattura.cliente.id = parseInt(element.id);
+        if (this.newFattura.stato.nome == 'PAGATA') {
+          this.newFattura.stato.id = 1;
+        }
+        else {
+          this.newFattura.stato.id = 2;
+        }
+        console.log(this.newFattura);
+        this.fattureService.createFattura(this.newFattura).subscribe(res => {
+          this.router.navigate(['fatture', res.id, 'dettaglio']);
         });
       }
     });

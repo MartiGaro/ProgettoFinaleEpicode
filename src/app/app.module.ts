@@ -15,9 +15,10 @@ import { DettaglioComponent } from './dettaglio/dettaglio.component';
 import { NewClienteComponent } from './new-cliente/new-cliente.component';
 import { NewComuneComponent } from './new-comune/new-comune.component';
 import { DettaglioFattComponent } from './dettaglio-fatt/dettaglio-fatt.component';
-import { NewFatturaComponent } from './new-fattura/new-fattura.component';
+import { ModFatturaComponent } from './mod-fattura/mod-fattura.component';
 import { NewProvinciaComponent } from './new-provincia/new-provincia.component';
 import { FattureClienteComponent } from './fatture-cliente/fatture-cliente.component';
+import { NewFatturaComponent } from './new-fattura/new-fattura.component';
 
 @NgModule({
   declarations: [
@@ -31,9 +32,10 @@ import { FattureClienteComponent } from './fatture-cliente/fatture-cliente.compo
     NewClienteComponent,
     NewComuneComponent,
     DettaglioFattComponent,
-    NewFatturaComponent,
+    ModFatturaComponent,
     NewProvinciaComponent,
     FattureClienteComponent,
+    NewFatturaComponent
   ],
   imports: [
     BrowserModule,
