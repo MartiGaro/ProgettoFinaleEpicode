@@ -11,6 +11,7 @@ import { NewComuneComponent } from './new-comune/new-comune.component';
 import { ModFatturaComponent } from './mod-fattura/mod-fattura.component';
 import { NewProvinciaComponent } from './new-provincia/new-provincia.component';
 import { NewFatturaComponent } from './new-fattura/new-fattura.component';
+import { RouteguardService } from './services/routeguard.service';
 
 const routes: Routes = [
   { path: '',
@@ -23,47 +24,58 @@ const routes: Routes = [
   },
   {
     path: 'clienti', 
-    component: ClientiComponent
+    component: ClientiComponent,
+    canActivate: [RouteguardService]
   },
   {
     path: 'fatture', 
-    component: FattureComponent
+    component: FattureComponent,
+    canActivate: [RouteguardService]
   },
   { 
     path: 'clienti/:id/dettaglio',
-    component: DettaglioComponent
+    component: DettaglioComponent,
+    canActivate: [RouteguardService]
   },
   { 
     path: 'clienti/nuovo',
-    component: NewClienteComponent
+    component: NewClienteComponent,
+    canActivate: [RouteguardService]
   },
   { 
     path: 'clienti/:id/modifica',
-    component: NewClienteComponent
+    component: NewClienteComponent,
+    canActivate: [RouteguardService]
   },
   { 
     path: 'clienti/:id/fatture',
-    component: FattureClienteComponent
+    component: FattureClienteComponent,
+    canActivate: [RouteguardService]
   },
   { 
     path: 'comuni/nuovo',
-    component: NewComuneComponent
+    component: NewComuneComponent,
+    canActivate: [RouteguardService]
   },
   { 
     path: 'province/nuova',
-    component: NewProvinciaComponent
+    component: NewProvinciaComponent,
+    canActivate: [RouteguardService]
   },
   { 
     path: 'fatture/:id/dettaglio',
-    component: DettaglioFattComponent
+    component: DettaglioFattComponent,
+    canActivate: [RouteguardService]
   },
   { 
     path: 'fatture/:id/nuova',
-    component: NewFatturaComponent
+    component: NewFatturaComponent,
+    canActivate: [RouteguardService]
   },
   { 
     path: 'fatture/:id/modifica',
-    component: ModFatturaComponent
+    component: ModFatturaComponent,
+    canActivate: [RouteguardService]
   }
 ];
 
