@@ -6,25 +6,32 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { UtenteService } from './services/utente.service';
 
 @Injectable()
 export class MyhttpInterceptor implements HttpInterceptor {
 
-  bearerAuth = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTYzNjU0NjA5OSwiZXhwIjoxNjM3NDEwMDk5fQ.SQVGfQSVelgiulMYfA28GHGUK5EeH3BfV6SoMWzPCbzwifZb0I7O5MyPwb8SmpR32VmRlL0d-h-u8d-fb8Ta7A';
   tenantID = 'fe_0421';
-  
-  constructor() {}
+
+  constructor(private utenteService: UtenteService) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    
+
     let myRequest: HttpRequest<any> = request;
-    myRequest = request.clone(
-      {headers: request.headers
-        .set("Authorization", 'Bearer ' + this.bearerAuth)
-        .set("X-TENANT-ID", this.tenantID)
+    if (this.utenteService.getToken()) {
+      myRequest = request.clone(
+        {
+          headers: request.headers
+            .set("Authorization", 'Bearer ' + this.utenteService.getToken())
+            .set("X-TENANT-ID", this.tenantID)
+        })
+    }
+    else {
+      myRequest = request.clone({
+        headers: request.headers.set('X-TENANT-ID', this.tenantID)
       })
-    
-    
+    }
+
     return next.handle(myRequest);
   }
 }
